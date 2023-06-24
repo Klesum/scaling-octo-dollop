@@ -1,0 +1,56 @@
+def celsius_to_fahrenheit(celsius):
+    fahrenheit = (celsius * 9/5) + 32
+    return fahrenheit
+
+def fahrenheit_to_celsius(fahrenheit):
+    celsius = (fahrenheit - 32) * 5/9
+    return celsius
+
+def celsius_to_kelvin(celsius):
+    kelvin = celsius + 273.15
+    return kelvin
+
+def kelvin_to_celsius(kelvin):
+    celsius = kelvin - 273.15
+    return celsius
+
+def fahrenheit_to_kelvin(fahrenheit):
+    celsius = fahrenheit_to_celsius(fahrenheit)
+    kelvin = celsius_to_kelvin(celsius)
+    return kelvin
+
+def kelvin_to_fahrenheit(kelvin):
+    celsius = kelvin_to_celsius(kelvin)
+    fahrenheit = celsius_to_fahrenheit(celsius)
+    return fahrenheit
+
+if __name__ == "__main__":
+    temperature = float(input("Enter the temperature: "))
+    source_unit = input("Enter the source unit (C, F, K): ")
+    target_unit = input("Enter the target unit (C, F, K): ")
+
+    converted_temperature = None
+
+    if source_unit == "C":
+        if target_unit == "F":
+            converted_temperature = celsius_to_fahrenheit(temperature)
+        elif target_unit == "K":
+            converted_temperature = celsius_to_kelvin(temperature)
+        else:
+            converted_temperature = temperature
+    elif source_unit == "F":
+        if target_unit == "C":
+            converted_temperature = fahrenheit_to_celsius(temperature)
+        elif target_unit == "K":
+            converted_temperature = fahrenheit_to_kelvin(temperature)
+        else:
+            converted_temperature = temperature
+    elif source_unit == "K":
+        if target_unit == "C":
+            converted_temperature = kelvin_to_celsius(temperature)
+        elif target_unit == "F":
+            converted_temperature = kelvin_to_fahrenheit(temperature)
+        else:
+            converted_temperature = temperature
+
+    print("Converted temperature:", converted_temperature, target_unit)
